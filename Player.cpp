@@ -60,7 +60,7 @@ void Player::PorcessEvent(Event event)
 void Player::Update(Time time)
 {
 	player.setPosition(player.getPosition().x + (directX)*(move*time.asMicroseconds()), player.getPosition().y);
-	move -= 0.00000005f;
+	move -= 0.0000002f;
 	if (move <= 0)
 	{
 		move = 0;
@@ -81,13 +81,13 @@ void Player::CheckBorder()
 	if (player.getPosition().x <= 0)
 	{
 		move = speed;
-		directX = 3;
+		directX = 1;
 		canDoInput = false;
 	}
 	if (player.getPosition().x + player.getGlobalBounds().width >= window->getSize().x)
 	{
 		move = speed;
-		directX = -3;
+		directX = -1;
 		canDoInput = false;
 	}
 }
@@ -108,13 +108,15 @@ void Player::Animation()
 	electic.setPosition(player.getPosition().x + 15, player.getPosition().y);
 }
 
-Vector2f Player::getPlayerPosition()
+Vector2f Player::getPosition()
 {
 	return player.getPosition();
 }
 
-FloatRect Player::getPlayerGetGlobalBounds()
+FloatRect Player::getGlobalBounds()
 {
 	return player.getGlobalBounds();
 }
+
+
 

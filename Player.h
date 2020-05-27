@@ -24,8 +24,8 @@ public:
 
 	void CheckBorder();
 	void Animation();
-	Vector2f getPlayerPosition();
-	FloatRect getPlayerGetGlobalBounds();
+	Vector2f getPosition();
+	FloatRect getGlobalBounds();
 
 
 private:

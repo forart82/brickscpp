@@ -18,13 +18,13 @@ Ball::Ball(
 	ball.setTexture(texture);
 	ball.setTextureRect(IntRect(805, 547, 76, 76));
 	ball.setPosition(
-		player->getPlayerPosition().x + player->getPlayerGetGlobalBounds().width / 2 - ball.getGlobalBounds().width / 2,
-		player->getPlayerPosition().y - ball.getGlobalBounds().height
+		player->getPosition().x + player->getGlobalBounds().width / 2 - ball.getGlobalBounds().width / 2,
+		player->getPosition().y - ball.getGlobalBounds().height
 	);
 	ball.setScale(0.5, 0.5);
 
 	move = speed;
-	direction.x = 1;
+	direction.x = 0;
 	direction.y = 1;
 
 
@@ -44,14 +44,14 @@ void Ball::Update(Time time)
 	if (!*start)
 	{
 		ball.setPosition(
-			player->getPlayerPosition().x + player->getPlayerGetGlobalBounds().width / 2 - ball.getGlobalBounds().width / 2,
-			player->getPlayerPosition().y - ball.getGlobalBounds().height
+			player->getPosition().x + player->getGlobalBounds().width / 2 - ball.getGlobalBounds().width / 2,
+			player->getPosition().y - ball.getGlobalBounds().height
 		);
 	}
 	else
 	{
 		ball.setPosition(
-			ball.getPosition().x, 
+			ball.getPosition().x -direction.x *move*time.asMicroseconds(), 
 			ball.getPosition().y - direction.y *(move * time.asMicroseconds())
 		);
 		//move -= 0.00000005f;

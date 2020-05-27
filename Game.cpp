@@ -16,7 +16,7 @@ Game::Game()
 	player = new Player(window,texture,start,speed);
 	unity = new Unity(window, true, texture);
 	ball = new Ball(window, texture, player,start,speed);
-	collision = new Collision(player, ball, unity);
+	collision = new Collision(window, player, ball, unity);
 
 	font.loadFromFile("arial.ttf");
 

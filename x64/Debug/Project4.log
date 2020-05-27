@@ -1,7 +1,7 @@
 ﻿  Ball.cpp
+  Collision.cpp
   Game.cpp
-  Player.cpp
-  Unity.cpp
   main.cpp
+  Player.cpp
   Génération de code en cours...
 sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'

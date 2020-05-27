@@ -12,20 +12,30 @@ class Collision
 {
 public:
 	Collision(
+		RenderWindow *gameWindow,
 		Player *gamePlayer, 
 		Ball *gameBall, 
-		Unity *gameUnity);
+		Unity *gameUnity
+	);
 	~Collision();
 
 	void Update(Time time);
 
 	void CollisionBallBoundries();
+	bool CheckBallTop();
+	bool CheckBallRight();
+	bool CheckBallBottom();
+	bool CheckBallLeft();
+
 	void CollisionBallPlayer();
 	bool CheckBallInsidePlayerWidth();
 	bool CheckBallOnPlayerHeight();
 	bool CheckBallUnderPlayerHeight();
 
+	void CreateBallDirections();
+
 private:
+	RenderWindow *window;
 	Player *player;
 	Ball *ball;
 	Unity *unity;
