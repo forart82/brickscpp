@@ -2,25 +2,31 @@
 
 Player::Player(
 	RenderWindow *gameWindow,
-	Texture *gameTexture
+	Texture *gameTexture,
+	bool *gameStart,
+	float gameSpeed
 	)
 {
 	window = gameWindow;
 	texture = gameTexture;
+	start = gameStart;
+	speed = gameSpeed;
+
 	player.setTexture(*texture);
 	player.setTextureRect(IntRect(395, 15, 152, 45));
 	player.setPosition(
-		window->getSize().x/2-player.getGlobalBounds().width/2, 
-		window->getSize().y-50
+		(float)window->getSize().x/2-player.getGlobalBounds().width/2, 
+		(float)window->getSize().y-50
 	);
-	player.setScale(0.5, 0.5);
+	player.setScale(0.5f, 0.5f);
 
 	electic.setTexture(*texture);
 	electic.setTextureRect(IntRect(spritesElectric[0], 15, 92, 12));
 	electic.setPosition(player.getPosition().x+15, player.getPosition().y);
-	electic.setScale(0.5, 0.5);
+	electic.setScale(0.5f, 0.5f);
 
 	canDoInput = true;
+
 }
 
 Player::~Player()
@@ -34,33 +40,27 @@ void Player::PorcessEvent(Event event)
 		if (Keyboard::isKeyPressed(Keyboard::D))
 		{
 			move = speed;
-			direction = 1;
+			directX = 1;
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{
 			move = speed;
-			direction = -1;
-		}
-		if (Keyboard::isKeyPressed(Keyboard::Space))
-		{
-			move = 0;
+			directX = -1;
 		}
 	}
-
-	// Both option are good. ist just a style qustion.
-	//if (event.type == Event::KeyReleased)
-	//{
-	//	canDoInput = true;
-	//}
 	canDoInput = true;
+	if (!*start)
+	{
+		move = 0;
+	}
 
 }
 
 void Player::Update(Time time)
 {
-	player.setPosition(player.getPosition().x + (direction)*(move*time.asMicroseconds()), player.getPosition().y);
-	move -= 0.00000005;
+	player.setPosition(player.getPosition().x + (directX)*(move*time.asMicroseconds()), player.getPosition().y);
+	move -= 0.00000005f;
 	if (move <= 0)
 	{
 		move = 0;
@@ -81,13 +81,13 @@ void Player::CheckBorder()
 	if (player.getPosition().x <= 0)
 	{
 		move = speed;
-		direction = 3;
+		directX = 3;
 		canDoInput = false;
 	}
 	if (player.getPosition().x + player.getGlobalBounds().width >= window->getSize().x)
 	{
 		move = speed;
-		direction = -3;
+		directX = -3;
 		canDoInput = false;
 	}
 }

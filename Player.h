@@ -12,7 +12,9 @@ class Player
 public:
 	Player(
 		RenderWindow *gameWindow,
-		Texture *gameTexture
+		Texture *gameTexture,
+		bool *gameStart,
+		float gameSpeed
 		);
 	~Player();
 
@@ -33,14 +35,14 @@ private:
 	Sprite player, electic;
 	Time animationTime = clock.restart();
 
-	bool canDoInput, isMoving;
-	float move, direction;
+	bool canDoInput, isMoving, *start;
+	int directX;
+	float move, speed;
 	
-	const float speed= 0.0005;
+
 
 	int spritesElectric[3] = { 426,600,770 };
 	int spritesCounter = 0;
-
 
 };
 

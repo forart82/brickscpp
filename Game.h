@@ -4,7 +4,8 @@
 #include "Unity.h"
 #include "list"
 #include "Player.h"
-#include "Ball.h";
+#include "Ball.h"
+#include "Collision.h"
 
 using namespace std;
 using namespace sf;
@@ -35,9 +36,13 @@ private:
 	Event event;
 
 	int fpsCounter, tmpFpsCounter, unityCounter;
+	bool *start;
+
+	const float speed = 0.0005f;
 
 	Player *player;
 	Unity *unity;
 	Ball *ball;
+	Collision *collision;
 
 };

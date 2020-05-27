@@ -1,3 +1,8 @@
 ﻿  Ball.cpp
-c:\users\mysco\source\repos\project4\project4\player.h(39): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
+  Collision.cpp
+  Game.cpp
+  main.cpp
+  Player.cpp
+  Unity.cpp
+  Génération de code en cours...
   Project4.vcxproj -> C:\Users\mysco\source\repos\Project4\Debug\Project4.exe

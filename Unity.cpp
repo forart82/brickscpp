@@ -10,7 +10,7 @@ Unity::Unity(
 	create = gameCreate;
 	texture = gameTexture;
 
-	speed = 0.00001;
+	speed = 0.00001f;
 
 	width = 175;
 	height = 60;
@@ -98,11 +98,11 @@ void Unity::CreateBrick()
 
 float Unity::SetPositionX(int eWidth,int element)
 {
-	return eWidth * element;
+	return (float)eWidth * element;
 }
 
 float Unity::SetPositionY(int eHeight, int element)
 {
-	return eHeight * element;
+	return (float)eHeight * element;
 }
 

@@ -3,17 +3,20 @@
 Game::Game()
 {
 	window = new RenderWindow();
-	window->create(sf::VideoMode(1500, 500), "SFML works!");
+	window->create(sf::VideoMode(500, 500), "SFML works!");
 	texture = new Texture();
-	
+	start = new bool(false);
+
+
 	if (!texture->loadFromFile("gamesprite.png"))
 	{
 		texture->create(200, 200);
 	}
 
-	player = new Player(window,texture);
+	player = new Player(window,texture,start,speed);
 	unity = new Unity(window, true, texture);
-	ball = new Ball(window, texture, player);
+	ball = new Ball(window, texture, player,start,speed);
+	collision = new Collision(player, ball, unity);
 
 	font.loadFromFile("arial.ttf");
 
@@ -43,6 +46,8 @@ Game::~Game()
 	delete player;
 	delete unity;
 	delete ball;
+	delete start;
+	delete collision;
 }
 
 int Game::Run()
@@ -70,18 +75,24 @@ int Game::Run()
 
 void Game::ProcessEvent(Event event)
 {
+
+	if (Keyboard::isKeyPressed(Keyboard::Space)) *start = true;
+	if (Keyboard::isKeyPressed(Keyboard::P)) *start = false;
+
 	player->PorcessEvent(event);
+	ball->ProcessEvent(event);
 }
 
 void Game::Update(Time time)
 {
 	tTest = testClock.getElapsedTime();
-	if (tTest.asSeconds()> 3)
+	if (tTest.asSeconds()> 1)
 	{
 		Fps();
 		player->Update(time);
 		unity->Update(time);
 		ball->Update(time);
+		collision->Update(time);
 	}
 
 }

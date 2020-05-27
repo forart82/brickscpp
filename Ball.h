@@ -12,13 +12,21 @@ public:
 	Ball(
 		RenderWindow *gameWindow,
 		Texture *gameTexture,
-		Player *gamePlayer
+		Player *gamePlayer,
+		bool *gameStart,
+		float gameSpeed
 		);
 	~Ball();
 
-	void ProcessEvent();
+	void ProcessEvent(Event event);
 	void Update(Time time);
 	void Render();
+
+	Vector2f getPosition();
+	FloatRect getGlobalBounds();
+	Vector2f getDirection();
+	void setDirection(float x, float y);
+
 
 private:
 	//76x76
@@ -28,4 +36,8 @@ private:
 	CircleShape ball;
 
 	Player *player;
+
+	Vector2f direction;
+	float move, speed;
+	bool *start;
 };

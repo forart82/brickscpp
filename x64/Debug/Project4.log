@@ -1,6 +1,7 @@
-﻿  Game.cpp
+﻿  Ball.cpp
+  Game.cpp
+  Player.cpp
   Unity.cpp
-c:\users\mysco\source\repos\project4\project4\unity.cpp(13): warning C4305: '=' : troncation de 'double' à 'float'
   main.cpp
-c:\program files (x86)\windows kits\10\include\10.0.17763.0\um\winnt.h(154): fatal error C1189: #error:  "No Target Architecture"
   Génération de code en cours...
+sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'
